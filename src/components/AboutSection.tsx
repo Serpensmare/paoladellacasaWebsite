@@ -1,4 +1,5 @@
 import AnimateOnScroll from './AnimateOnScroll';
+import paolaPortrait from '@/assets/paola-portrait.jpeg';
 
 const AboutSection = () => {
   const benefits = [
@@ -16,22 +17,16 @@ const AboutSection = () => {
           <AnimateOnScroll>
             <div className="relative">
               {/* Image container with elegant frame */}
-              <div className="relative aspect-[4/5] bg-gradient-to-br from-muted to-muted/50 overflow-hidden">
-                {/* Placeholder for portrait */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-center p-8">
-                    <div className="w-32 h-32 mx-auto mb-6 rounded-full bg-primary/10 flex items-center justify-center">
-                      <span className="font-serif text-4xl text-primary">P</span>
-                    </div>
-                    <p className="text-sm text-muted-foreground tracking-wide uppercase">
-                      Portrait of Paola
-                    </p>
-                  </div>
-                </div>
+              <div className="relative aspect-[4/5] overflow-hidden">
+                <img 
+                  src={paolaPortrait} 
+                  alt="Paola della Casa - Somatic Coach"
+                  className="w-full h-full object-cover object-center"
+                />
                 
                 {/* Decorative corner accent */}
-                <div className="absolute top-0 right-0 w-20 h-20 border-t-2 border-r-2 border-accent/30" />
-                <div className="absolute bottom-0 left-0 w-20 h-20 border-b-2 border-l-2 border-accent/30" />
+                <div className="absolute top-0 right-0 w-20 h-20 border-t-2 border-r-2 border-accent/50" />
+                <div className="absolute bottom-0 left-0 w-20 h-20 border-b-2 border-l-2 border-accent/50" />
               </div>
               
               {/* Floating accent element */}
