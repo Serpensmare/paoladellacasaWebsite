@@ -65,17 +65,17 @@ const Navigation = () => {
 
       {/* Mobile Menu */}
       <div
-        className={`md:hidden absolute top-full left-0 right-0 bg-background/98 backdrop-blur-md transition-all duration-500 overflow-hidden ${
+        className={`md:hidden absolute top-full left-0 right-0 z-50 bg-background backdrop-blur-xl shadow-lg transition-all duration-500 overflow-hidden ${
           isMobileMenuOpen ? 'max-h-96 border-b border-border' : 'max-h-0'
         }`}
       >
-        <div className="container mx-auto px-6 py-8 space-y-6">
+        <div className="container mx-auto px-6 py-8 space-y-6 bg-background">
           {navItems.map((item) => (
             <a
               key={item.label}
               href={item.href}
               onClick={() => setIsMobileMenuOpen(false)}
-              className="block text-lg tracking-wide text-foreground/80 hover:text-primary transition-colors duration-300"
+              className="block text-lg tracking-wide text-foreground hover:text-primary transition-colors duration-300"
             >
               {item.label}
             </a>
