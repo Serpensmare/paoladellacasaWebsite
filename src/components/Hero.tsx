@@ -1,14 +1,37 @@
+import { useState, useEffect } from 'react';
 import { ChevronDown } from 'lucide-react';
 
 const Hero = () => {
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const parallaxOffset = scrollY * 0.3;
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Subtle background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-muted/30" />
+      {/* Subtle background gradient with parallax */}
+      <div 
+        className="absolute inset-0 bg-gradient-to-br from-background via-background to-muted/30 parallax"
+        style={{ transform: `translateY(${parallaxOffset * 0.2}px)` }}
+      />
       
-      {/* Decorative elements */}
-      <div className="absolute top-1/4 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
-      <div className="absolute bottom-1/4 left-0 w-80 h-80 bg-secondary/5 rounded-full blur-3xl" />
+      {/* Decorative elements with parallax */}
+      <div 
+        className="absolute top-1/4 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl parallax"
+        style={{ transform: `translateY(${parallaxOffset * 0.5}px)` }}
+      />
+      <div 
+        className="absolute bottom-1/4 left-0 w-80 h-80 bg-secondary/5 rounded-full blur-3xl parallax"
+        style={{ transform: `translateY(${parallaxOffset * 0.3}px)` }}
+      />
 
       <div className="relative z-10 container mx-auto px-6 lg:px-12">
         <div className="max-w-5xl mx-auto">
@@ -34,14 +57,14 @@ const Hero = () => {
           <div className="animate-fade-in-delay-3 mt-12 md:mt-16 flex flex-col sm:flex-row gap-4 sm:gap-6">
             <a
               href="#approach"
-              className="inline-flex items-center justify-center px-8 py-4 bg-primary text-primary-foreground text-sm tracking-widest uppercase hover:bg-primary/90 transition-all duration-300 group"
+              className="inline-flex items-center justify-center px-8 py-4 bg-primary text-primary-foreground text-sm tracking-widest uppercase hover:bg-primary/90 transition-all duration-300 group touch-target"
             >
               Discover My Approach
               <ChevronDown className="ml-2 w-4 h-4 group-hover:translate-y-1 transition-transform" />
             </a>
             <a
               href="#connect"
-              className="inline-flex items-center justify-center px-8 py-4 border border-foreground/20 text-foreground text-sm tracking-widest uppercase hover:border-primary hover:text-primary transition-all duration-300"
+              className="inline-flex items-center justify-center px-8 py-4 border border-foreground/20 text-foreground text-sm tracking-widest uppercase hover:border-primary hover:text-primary transition-all duration-300 touch-target"
             >
               Get in Touch
             </a>
@@ -50,11 +73,15 @@ const Hero = () => {
       </div>
 
       {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-float">
-        <div className="flex flex-col items-center gap-3 text-muted-foreground">
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-float hidden md:block">
+        <a 
+          href="#about" 
+          className="flex flex-col items-center gap-3 text-muted-foreground hover:text-primary transition-colors"
+          aria-label="Scroll to learn more"
+        >
           <span className="text-xs tracking-[0.2em] uppercase">Scroll</span>
           <div className="w-px h-12 bg-gradient-to-b from-muted-foreground/50 to-transparent" />
-        </div>
+        </a>
       </div>
     </section>
   );

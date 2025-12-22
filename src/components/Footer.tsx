@@ -11,14 +11,14 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-muted/50 border-t border-border">
+    <footer className="bg-muted/50 border-t border-border" role="contentinfo">
       <div className="container mx-auto px-6 lg:px-12 py-16 lg:py-20">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
           {/* Column 1 - Brand */}
           <div className="space-y-4">
-            <h3 className="font-serif text-2xl lg:text-3xl text-foreground">
+            <h2 className="font-serif text-2xl lg:text-3xl text-foreground">
               Paola della Casa
-            </h3>
+            </h2>
             <p className="text-sm text-muted-foreground tracking-wide">
               Somatic Coach | SE & NARM Facilitator
             </p>
@@ -29,10 +29,10 @@ const Footer = () => {
 
           {/* Column 2 - Quick Links */}
           <div className="space-y-6">
-            <h4 className="text-xs tracking-[0.2em] uppercase text-muted-foreground">
+            <h3 className="text-xs tracking-[0.2em] uppercase text-muted-foreground">
               Navigation
-            </h4>
-            <nav className="flex flex-col space-y-3">
+            </h3>
+            <nav aria-label="Footer navigation" className="flex flex-col space-y-3">
               {quickLinks.map((link) => (
                 <a
                   key={link.label}
@@ -47,24 +47,24 @@ const Footer = () => {
 
           {/* Column 3 - Location & Social */}
           <div className="space-y-6">
-            <h4 className="text-xs tracking-[0.2em] uppercase text-muted-foreground">
+            <h3 className="text-xs tracking-[0.2em] uppercase text-muted-foreground">
               Connect
-            </h4>
-            <div className="space-y-3 text-foreground/80">
+            </h3>
+            <address className="space-y-3 text-foreground/80 not-italic">
               <p>Based in Geneva, Switzerland</p>
               <p>Working globally, online & in-person</p>
-            </div>
+            </address>
             
             {/* Social Links */}
             <div className="pt-4">
               <a
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/in/paoladellacasa/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center w-10 h-10 border border-border rounded-full text-foreground/60 hover:text-primary hover:border-primary transition-all duration-300"
-                aria-label="LinkedIn"
+                className="inline-flex items-center justify-center w-12 h-12 border border-border rounded-full text-foreground/60 hover:text-primary hover:border-primary transition-all duration-300 touch-target"
+                aria-label="Connect with Paola on LinkedIn"
               >
-                <Linkedin size={18} />
+                <Linkedin size={20} />
               </a>
             </div>
           </div>

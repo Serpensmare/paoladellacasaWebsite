@@ -108,10 +108,22 @@
   body {
     @apply bg-background text-foreground antialiased;
     font-family: var(--font-sans);
+    font-size: 16px;
+    line-height: 1.6;
   }
 
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-serif);
+  }
+
+  /* Focus states for accessibility */
+  :focus-visible {
+    @apply outline-none ring-2 ring-primary ring-offset-2 ring-offset-background;
+  }
+
+  /* Selection styling */
+  ::selection {
+    @apply bg-primary/20 text-foreground;
   }
 }
 
@@ -126,6 +138,12 @@
 
   .editorial-body {
     @apply font-sans leading-relaxed;
+  }
+
+  /* Touch-friendly button sizing */
+  .touch-target {
+    min-height: 44px;
+    min-width: 44px;
   }
 }
 
@@ -165,6 +183,11 @@
   .hover-underline:hover::after {
     @apply scale-x-100 origin-left;
   }
+
+  /* Parallax effect helper */
+  .parallax {
+    will-change: transform;
+  }
 }
 
 @keyframes fadeIn {
@@ -198,4 +221,21 @@
 
 .animate-float {
   animation: float 3s ease-in-out infinite;
+}
+
+/* Smooth scroll anchor offset for fixed header */
+html {
+  scroll-padding-top: 100px;
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
