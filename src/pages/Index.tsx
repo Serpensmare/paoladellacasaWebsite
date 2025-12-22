@@ -6,6 +6,8 @@ import ModalitiesSection from '@/components/ModalitiesSection';
 import WhoIServeSection from '@/components/WhoIServeSection';
 import TestimonialsSection from '@/components/TestimonialsSection';
 import ImpactSection from '@/components/ImpactSection';
+import ConnectSection from '@/components/ConnectSection';
+import ClosingStatement from '@/components/ClosingStatement';
 import Footer from '@/components/Footer';
 
 const Index = () => {
@@ -20,6 +22,8 @@ const Index = () => {
         <WhoIServeSection />
         <TestimonialsSection />
         <ImpactSection />
+        <ConnectSection />
+        <ClosingStatement />
       </main>
       <Footer />
     </div>
